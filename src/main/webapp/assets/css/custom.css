@@ -1,0 +1,163 @@
+/***************************** Required styles *****************************/
+
+/**
+ * For the correct positioning of the placeholder element, the dnd-list and
+ * it's children must have position: relative
+ */
+.advancedDemo ul[dnd-list],
+.advancedDemo ul[dnd-list] > li {
+    position: relative;
+}
+
+/***************************** Dropzone Styling *****************************/
+
+/**
+ * The dnd-list should always have a min-height,
+ * otherwise you can't drop to it once it's empty
+ */
+.advancedDemo .trip-box {
+    border: 2px solid #808080;
+    background-color: #FFE4B5;
+    min-height: 200px;
+    max-height: 500px;
+    overflow-y: scroll;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+    margin-left: 5px;
+    margin-right: 10px;
+
+}
+
+.advancedDemo .unassigned-task-box {
+    border: 2px solid #808080;
+    background-color: #FFE4B5;
+    height: 500px;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+    margin-left: 5px;
+    margin-right: 10px;
+
+}
+
+.advancedDemo .trip-box #trip-container {
+    border: 2px solid #808080;
+    background-color: #fff8dc;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+
+}
+
+.button-success {
+    background: rgb(28, 184, 65); /* this is a green */
+}
+
+
+.advancedDemo .trip-box .dropzone ul[dnd-list] {
+    border-top: 2px solid #808080;
+    min-height: 140px !important;
+    max-height: 140px !important;
+    margin: 0px;
+    padding-left: 0px;
+    overflow-y: scroll;
+}
+
+.advancedDemo .unassigned-task-box .dropzone ul[dnd-list] {
+    border-top: 2px solid #808080;
+    min-height: 450px !important;
+    max-height: 450px !important;
+    margin: 0px;
+    padding-left: 0px;
+    overflow-y: scroll;
+}
+
+
+/**
+ * The dnd-lists's child elements currently MUST have
+ * position: relative. Otherwise we can not determine
+ * whether the mouse pointer is in the upper or lower
+ * half of the element we are dragging over. In other
+ * browsers we can use event.offsetY for this.
+ */
+.advancedDemo .dropzone li {
+    display: block;
+}
+
+/**
+ * Reduce opacity of elements during the drag operation. This allows the user
+ * to see where he is dropping his element, even if the element is huge. The
+ * .dndDragging class is automatically set during the drag operation.
+ */
+.advancedDemo .dropzone .dndDragging {
+    opacity: 0.7;
+}
+
+/**
+ * The dndDraggingSource class will be applied to the source element of a drag
+ * operation. It makes sense to hide it to give the user the feeling that he's
+ * actually moving it. Note that the source element has also .dndDragging class.
+ */
+.advancedDemo .dropzone .dndDraggingSource {
+    display: none;
+}
+
+/**
+ * An element with .dndPlaceholder class will be added as child of the dnd-list
+ * while the user is dragging over it.
+ */
+.advancedDemo .dropzone .dndPlaceholder {
+    background-color: #ddd !important;
+    min-height: 42px;
+    display: block;
+    position: relative;
+}
+
+/***************************** Element type specific styles *****************************/
+
+.advancedDemo .dropzone .itemlist {
+    min-height: 120px !important;
+}
+
+.advancedDemo .dropzone .itemlist > li {
+    background-color: #cd853f;
+    border: none;
+    border-radius: .25em;
+    color: #fff;
+    float: left;
+    font-weight: 700;
+    height: 50px;
+    overflow: auto;
+    margin: 5px;
+    padding: 3px;
+    text-align: center;
+    width: 60px;
+}
+
+.advancedDemo .dropzone .container-element {
+    margin: 10px;
+}
+
+.basic-styling {
+    padding: 5px;
+}
+
+.basic-styling .advancedDemo  #map-container {
+    position: absolute;
+    left: 10px; top: 10px;
+    right: 10px; bottom: 10px;
+
+    /* Default map view is full screen. Set height and width to customize the dimensions */
+    /* height: 50%; or height: 400px; */
+    /* width: 50%; or width: 400px; */
+
+}
+
+#map-container {
+    position: absolute;
+    left: 10px; top: 10px;
+    right: 10px; bottom: 10px;
+
+    /* Default map view is full screen. Set height and width to customize the dimensions */
+    /* height: 50%; or height: 400px; */
+    /* width: 50%; or width: 400px; */
+
+}

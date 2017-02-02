@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Search Company Details</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+	</head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="lib/angular/angular.min.js"></script>
+	<script type="text/javascript" src="appcontroller.js"></script>
+
+	<body class="container" ng-app="app" ng-controller="AppController">
+		<div class="page-header">
+			<h1>Search Company Details</h1>
+		</div>
+
+		<div class="widget-body">
+			<div>
+				<table>
+					<tr>
+						<td class="col-xs-3 col-md-3">
+							<label>Upload Company Names</label>
+							<div class="widget-body bordered-left bordered-blue">
+								<input class="btn btn-primary" type="file" file-model="modal.myFile"/><br>
+								<button class="btn btn-warning" ng-click="uploadWork()"> Search
+								</button>
+							</div>
+						</td>
+						<td><center><label ng-if="modal.enable!=true"><img src="/images/loading_animation.gif"></label></center>
+							<div class="widget-body bordered-left bordered-blue" ng-model="modal.result"
+								 ng-if="(modal.result.BatchTypeId!=null || modal.result.Comments!=null)">
+								<table class="table table-striped">
+									<thead>
+									<tr>
+										<th>Id</th>
+										<th>DryRun</th>
+										<th>Date</th>
+										<th>Status</th>
+										<th>Comments</th>
+									</tr>
+									</thead>
+									<tbody>
+									<tr>
+										<td>{{modal.result.Id}}</td>
+										<td>{{modal.result.DryRun}}</td>
+										<td>{{modal.result.BatchDate}}</td>
+										<td>{{modal.result.Status}}</td>
+										<td>{{modal.result.Comments}}</td>
+									</tr>
+									</tbody>
+								</table>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<hr>
+			<div class="widget-body bordered-left bordered-blue" ng-model="modal.result"
+				 ng-if="modal.BatchResults!=null && modal.BatchResults.length>0">
+				<div>
+					<table class="table table-bordered table-hover">
+						<thead>
+						<tr>
+							<th>Company Name</th>
+							<th>
+								<div class="row">
+									<div class="col-md-4">
+										Company Name & Adress
+									</div>
+									<div class="col-md-8">
+										Officer details
+									</div>
+								</div>
+							</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr ng-repeat="BatchResult in modal.BatchResults">
+							<td>{{BatchResult.key}}</td>
+							<td>
+								<div class="row" ng-repeat="c in BatchResult.companies">
+									<div class="col-md-4">
+										{{c.title}} <br>
+										Address: <br>
+										{{c.address_snippet}}
+									</div>
+									<div class="col-md-8">
+										<div ng-repeat="o in c.officers">
+										{{o.name}}
+										</div>
+									</div>
+									<br>
+								</div>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
